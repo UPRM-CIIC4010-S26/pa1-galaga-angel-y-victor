@@ -116,8 +116,13 @@
         },
         {
             "type": "cppbuild",
+<<<<<<< HEAD
             "label": "C/C++: gcc.exe build active file",
             "command": "C:/w64devkit/bin/gcc.exe",
+=======
+            "label": "C/C++: g++.exe build active file",
+            "command": "C:/w64devkit/bin/g++.exe",
+>>>>>>> 082704961a99d7ebfca2b4764eecdd1ddd63b94f
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
