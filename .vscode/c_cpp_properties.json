@@ -5,7 +5,10 @@
             "includePath": [
                 "${workspaceFolder}/build/external/raylib-5.5/src/**",
                 "${workspaceFolder}/include/**",
-                "${workspaceFolder}/src/**"
+                "${workspaceFolder}/src/**",
+                "\"includePath\": [",
+                "    \"${workspaceFolder}/**\"",
+                "],"
             ],
             "defines": [
                 "_DEBUG",
@@ -16,7 +19,8 @@
             ],
             "cStandard": "c17",
             "cppStandard": "c++17",
-            "intelliSenseMode": "gcc-x64"
+            "intelliSenseMode": "windows-gcc-x64",
+            "compilerPath": "C:/w64devkit/bin/g++.exe"
         },
         {
             "name": "Mac",
