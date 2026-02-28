@@ -63,6 +63,11 @@ void Program::Update() {
         if (lives <= 0 && pauseFrames <= 0) gameOver = true;
         Projectile::CleanProjectiles();
         Projectile::ProjectileCollision();
+
+        if (score >= nextLifeScore){
+            if (lives < 5) lives++;
+            nextLifeScore += 1000;
+        }
     }
 }
 
@@ -91,7 +96,8 @@ void Program::ManageEnemyRespawns() {
 
     respawnCooldown -= 1;
     if (respawnCooldown <= 0) {
-        respawnCooldown = 1080;
+        respawnCooldown = std::max(1080 - (score / 1000) * 100, 200);
+       
         for (std::pair<std::pair<float, float>, Enemy*>& p : Enemy::enemies) {
             if (!p.second && p.first.second != 150) {
                 int eType = GetRandomValue(1, 3);
@@ -163,6 +169,10 @@ void Program::KeyInputs() {
     }
 
     if (!startup && !paused && !gameOver && pauseFrames <= 0) player->keyInputs();
+
+    if (!startup && IsKeyPressed(KEY_K)){
+        score += 500;
+    }
    
 }
 
@@ -187,4 +197,6 @@ void Program::Reset() {
     count = 0;
     delay = 0;
     lives = 3;
+    score = 0;
+    nextLifeScore = 1000;
 }
