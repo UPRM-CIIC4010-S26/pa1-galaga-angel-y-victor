@@ -168,6 +168,7 @@ void Program::KeyInputs() {
 
     if (startup && IsKeyPressed(KEY_ENTER)) {
         startup = false;
+        PlayMusicStream(SoundManager::backgroundMusic);
     }
 
     if (!startup && !paused && !gameOver && pauseFrames <= 0) player->keyInputs();
