@@ -38,6 +38,7 @@ class Program {
         void KeyInputs();
         void PlayerReset();
         void Reset();
+        bool IsStartup() { return startup; }       
           
         ~Program() {}
 };

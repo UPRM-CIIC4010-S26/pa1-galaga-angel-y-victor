@@ -12,7 +12,6 @@ int main ()
 	Program Galaga;
 	ImageManager::Load();
 	SoundManager::Load();
-
 	if (!IsWindowReady()) {
     TraceLog(LOG_ERROR, "Window failed to initialize!");
     return 1;
@@ -25,6 +24,13 @@ int main ()
 		Galaga.Update();
 		Galaga.Draw();
 		Galaga.KeyInputs();
+	
+				UpdateMusicStream(SoundManager::backgroundMusic); 
+
+
+		
+
+
 
 		EndDrawing();
 	}
