@@ -22,6 +22,8 @@ class Enemy {
         inline static float direction = 0.5;
         inline static int directionChange = 100;
         inline static std::vector<std::pair<std::pair<float, float>, Enemy*>> enemies;
+        inline static int* score = nullptr;
+        int scoreValue = 100;
 
         Enemy() {}
 
@@ -55,21 +57,21 @@ class Enemy {
                             p.second->health--;
                             p2.del = true;
                         
-                        if (p.second->health > 0) {
-                            PlaySound(SoundManager::hit);
-                
-                        }else{
-                            PlaySound(SoundManager::dead);
+                            if (p.second->health > 0) {
+                                PlaySound(SoundManager::hit);
+                            } else {
+                                PlaySound(SoundManager::dead);
+                            }
                         }
                     }
-                }
 
                     if (p.second->health <= 0) {
-                        Animation::animations.push_back(
-                            Animation(p.second->position.first, p.second->position.second, 155, 0, 33, 33, 30, 30, 4, ImageManager::SpriteSheet)
-                        );
-                        p.second = nullptr;
-                    }
+                    if (Enemy::score) *Enemy::score += p.second->scoreValue;
+                    Animation::animations.push_back(
+                        Animation(p.second->position.first, p.second->position.second, 155, 0, 33, 33, 30, 30, 4, ImageManager::SpriteSheet)
+                    );
+                    p.second = nullptr;
+                }
                 }
             }
             

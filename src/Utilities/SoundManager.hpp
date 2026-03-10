@@ -8,7 +8,7 @@ class SoundManager {
     static inline Sound gameOver;
     static inline Sound hit;
     static inline Sound shoot;
-    static  Music backgroundMusic;
+    static inline Music backgroundMusic;
 
     static void Load() {
         attack = LoadSound("audio/attack.mp3");

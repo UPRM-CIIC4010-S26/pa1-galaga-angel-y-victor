@@ -25,6 +25,8 @@ Program::Program() {
             new StdEnemy(x, y)
         });
     }
+
+    Enemy::score = &score;
 }
 
 void Program::Update() {
@@ -75,6 +77,7 @@ void Program::Update() {
 
 void Program::Draw() {
     background.Draw();
+    DrawText(TextFormat("Score: %d", score), GetScreenWidth() / 2 - 50, 10, 24, RED);
     if (pauseFrames <= 0 && !gameOver) player->draw();
     for (Animation& a : Animation::animations) a.draw();
 
